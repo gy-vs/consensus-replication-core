@@ -1,0 +1,36 @@
+{
+  "name": "mini-raft",
+  "version": "0.1.0",
+  "description": "Raft replication core with deterministic simulator and linearizability checker",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "exports": {
+    "./core": {
+      "types": "./dist/core/index.d.ts",
+      "default": "./dist/core/index.js"
+    },
+    "./sim": {
+      "types": "./dist/sim/index.d.ts",
+      "default": "./dist/sim/index.js"
+    },
+    "./checker": {
+      "types": "./dist/checker/index.d.ts",
+      "default": "./dist/checker/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "tsc -p tsconfig.json && node --test --test-reporter=spec dist/test"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.43",
+    "typescript": "5.4"
+  }
+}

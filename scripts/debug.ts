@@ -1,0 +1,10 @@
+import { Simulator } from "../src/sim/index.js";
+import { checkLinearizable, keyValueModel } from "../src/checker/index.js";
+const seed = Number(process.argv[2] ?? 1);
+const ops = Number(process.argv[3] ?? 200);
+const sim = new Simulator(seed, { operations: ops });
+const r = sim.run();
+const t0 = Date.now();
+const c = checkLinearizable(keyValueModel(), r.history, { maxSteps: 500_000_000 });
+console.log("seed",seed,"ops", r.history.length, "lin", c.ok, "ms", Date.now()-t0, "unresolved", r.unresolved);
+if (!c.ok) console.log(c.message);
