@@ -1,0 +1,23 @@
+{
+  "name": "raft-kernel",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Deterministic Raft replication kernel, simulator, and linearizability checker (no third-party deps).",
+  "engines": {
+    "node": ">=20"
+  },
+  "exports": {
+    "./raft": "./dist/src/raft/index.js",
+    "./sim": "./dist/src/sim/index.js",
+    "./checker": "./dist/src/checker/index.js"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "tsc -p tsconfig.json && node --test dist/src/tests/"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.0",
+    "typescript": "^5.5.4"
+  }
+}
